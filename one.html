@@ -1,0 +1,82 @@
+<html>
+    
+    <body>
+        <form>
+            <button type="button" onclick="DateFunc()">Display Date</button>
+            <input type="text" id="date" name="fname">
+            <button type="button" onclick="bFunc()">Calculate Factorial</button><br><br>
+
+            <h1>Multiplication Table</h1>
+            <input type="number" name="fname" id="mul">
+            <button type="button" onclick="bufun()">Generate Table</button><br>
+            <div id="output1"></div><br>
+
+            <h1>Sum of Numbers</h1>
+            <input type="number" name="fname" id="sum">
+            <button type="button" onclick="sumfun()">Calculate Sum</button><br>
+            <div id="output2"></div><br>
+
+            <h2>Password Visibility Toggle</h2>
+            <label for="fname">Password: </label>
+            <input type="password" id="pass" name="password">
+            <input type="checkbox" id="passtog">Show Password
+        </form>
+    
+        <script>
+            function DateFunc(){
+                const d= new Date();
+                document.getElementById("date").value=d.toLocaleDateString();
+            }
+            function bFunc(){
+                let x= prompt("Enter a number to calculate the factorial: ","");
+                let y=x;
+                let fact=1;
+                while(x>0){
+                    fact=fact*x;
+                    x=x-1;
+                }
+                alert("The factorial of "+ y+ " is "+ fact);
+            }
+            function bufun(){
+                let x=document.getElementById("mul").value;
+                let op=document.getElementById("output1");
+                
+                op.innerHTML="";
+                if (x === "") {
+                    outputDiv.innerHTML = "Please enter a number.";
+                    return;
+                }
+                op.innerHTML+="Multiplication table of "+x+" is: <br>"
+                for(let i=1;i<=10; i++){
+                    op.innerHTML+= x+" x "+i+" = "+(x*i)+ "<br>";
+                }
+            }
+            function sumfun(){
+                let x=document.getElementById("sum").value;
+                let op=document.getElementById("output2");
+                let sum=0;
+                op.innerHTML="";
+                if (x === "") {
+                    outputDiv.innerHTML = "Please enter a number.";
+                    return;
+                }
+                
+                for(let i=1;i<=x; i++){
+                    sum=sum+i;
+                }
+                op.innerHTML+="The total sum is: "+sum;
+            }
+
+            const a=document.getElementById("pass");
+            const b=document.getElementById("passtog");
+            b.addEventListener("change", function(){
+                if(this.checked){
+                    a.type="text";
+                }
+                else{
+                    a.type="password";
+                }
+            })
+        </script>
+    </body>
+</html>
